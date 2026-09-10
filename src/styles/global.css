@@ -18,7 +18,7 @@ nav a:hover { color:white; }
 .hero::after { content:""; position:absolute; inset:auto 0 0; height:27%; background:linear-gradient(transparent,var(--ink)); }
 .hero-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(2,13,22,.93) 0%,rgba(2,13,22,.68) 37%,rgba(2,13,22,.08) 68%),linear-gradient(0deg,rgba(3,19,29,.28),transparent 55%); }
 .hero-content { position:relative; z-index:2; width:min(900px,88vw); margin-left:clamp(24px,9vw,150px); padding-top:70px; }
-.section-index { margin:0 0 25px; color:var(--cyan); font-size:.69rem; letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
+.section-index { margin:0 0 25px; color:var(--cyan); font-size:.82rem; letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
 .hero h1 { margin:0; font-size:clamp(3.8rem,7.3vw,7.7rem); line-height:.9; letter-spacing:-.065em; font-weight:500; }
 .hero-copy { max-width:650px; margin:34px 0; color:rgba(232,242,244,.78); font-size:clamp(1.05rem,1.5vw,1.3rem); line-height:1.6; }
 .hero-link { display:inline-flex; gap:38px; align-items:center; border-bottom:2px solid var(--orange); padding:0 0 10px; font-size:.82rem; letter-spacing:.04em; }
@@ -75,7 +75,8 @@ nav a:hover { color:white; }
 .about::before { background:url('/Web-Portofolio/images/ocean-subprojects-v3.webp') center calc(50% + var(--ocean-shift))/cover no-repeat fixed; }
 .about::after { z-index:-1; background:rgb(3 19 29 / calc(.62 * (1 - var(--about-reveal)))); }
 .about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:12vw; }
-.about .section-index,.about h2,.about-grid>div { text-shadow:0 2px 20px rgba(0,8,14,.92); }
+.about .section-index { color:#8ee8fa; font-weight:800; text-shadow:0 2px 3px rgba(0,8,14,1),0 0 20px rgba(0,8,14,.95); }
+.about h2,.about-grid>div { text-shadow:0 2px 20px rgba(0,8,14,.92); }
 .about-grid>div { position:relative; isolation:isolate; display:flex; align-items:center; }
 .about h2 span,.about h2 strong { display:block; }
 .about h2 span { font:inherit; }

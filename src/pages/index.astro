@@ -58,7 +58,7 @@ const projects = [
       </section>
       <div class="ocean-section" data-ocean-section>
       <section class="projects section-shell" id="projects">
-        <div class="projects-intro"><p class="section-index">SUBPROJECTS</p></div>
+        <div class="projects-intro"><p class="section-index">PROJECTS</p></div>
         <div class="project-list">{projects.map(project => <article class="project-card" id={project.id}>
           <div class="project-copy"><h3>{project.title}</h3><p>{project.description}</p><ul>{project.tags.map(tag => <li>{tag}</li>)}</ul><a href={`/Web-Portofolio/projects/${project.id}/`}>View full project <span>↗</span></a></div>
           <div class="project-media" data-carousel data-project={project.title}>

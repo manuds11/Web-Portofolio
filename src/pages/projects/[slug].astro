@@ -23,7 +23,7 @@ const { project } = Astro.props;
   </head>
   <body>
     <main class="case-study">
-      <header class="case-header"><a href="/Web-Portofolio/#projects">← Subprojects</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
+      <header class="case-header"><a href="/Web-Portofolio/#projects">← Projects</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
       <section class="case-hero"><p class="section-index">SUBPROJECT</p><h1>{project.title}</h1><p>{project.summary}</p></section>
       <section class="case-outline"><p class="section-index">PROVISIONAL STRUCTURE</p><ol>{project.topics.map((topic, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{topic}<small>Content to be added</small></li>)}</ol></section>
     </main>
