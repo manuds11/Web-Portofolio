@@ -41,14 +41,14 @@ nav a:hover { color:white; }
 .milestone-track .next strong,.milestone-track .next small { color:var(--orange); }
 .milestone-track .goal .milestone-dot { border-color:white; }
 .milestone-track a:hover strong { color:var(--orange); }
-.ocean-section { --ocean-shift:0px; position:relative; isolation:isolate; background-image:linear-gradient(to bottom,var(--ink) 0,rgba(3,19,29,.96) 7rem,rgba(3,19,29,.72) 22rem,rgba(3,19,29,.66) 100%),url('/Web-Portofolio/images/ocean-adobe-test.webp'); background-position:center top,center calc(50% + var(--ocean-shift)); background-size:cover,cover; background-repeat:no-repeat; background-attachment:scroll,fixed; }
+.ocean-section { --ocean-shift:0px; position:relative; isolation:isolate; background-image:linear-gradient(to bottom,var(--ink) 0,rgba(3,19,29,.96) 7rem,rgba(3,19,29,.72) 22rem,rgba(3,19,29,.66) 100%),url('/Web-Portofolio/images/ocean-subprojects-v3.webp'); background-position:center top,center calc(50% + var(--ocean-shift)); background-size:cover,cover; background-repeat:no-repeat; background-attachment:scroll,fixed; }
 .ocean-section>* { position:relative; z-index:1; }
 .projects { border-top:1px solid var(--line); }
 .projects-intro { margin-bottom:55px; }
 .project-list { display:grid; gap:28px; }
 .project-card { scroll-margin-top:90px; display:grid; grid-template-columns:.82fr 1.18fr; min-height:590px; border:1px solid rgba(151,206,222,.28); background:transparent; overflow:hidden; }
 .project-copy { display:flex; flex-direction:column; padding:clamp(34px,5vw,74px); background:rgba(3,24,36,.86); backdrop-filter:blur(5px); }
-.project-card:first-child .project-copy { background:rgba(3,24,36,.62); }
+.project-card:first-child .project-copy { background:rgba(3,24,36,.48); }
 .project-copy h3 { margin:auto 0 22px; font-size:clamp(2.5rem,4vw,4.7rem); line-height:.95; letter-spacing:-.05em; font-weight:500; }
 .project-copy>p { max-width:570px; color:var(--muted); font-size:1.02rem; }
 .project-copy ul { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 38px; padding:0; list-style:none; }
@@ -71,7 +71,7 @@ nav a:hover { color:white; }
 .technical-visual { position:relative; height:100%; min-height:320px; overflow:hidden; background:radial-gradient(circle at 52% 47%,rgba(17,108,146,.28),transparent 34%),#041822; }
 .grid-lines { position:absolute; inset:0; opacity:.23; background-image:linear-gradient(rgba(104,197,221,.23) 1px,transparent 1px),linear-gradient(90deg,rgba(104,197,221,.23) 1px,transparent 1px); background-size:42px 42px; transform:perspective(500px) rotateX(58deg) scale(1.7); transform-origin:center bottom; }
 .visual-label { position:absolute; right:22px; bottom:20px; color:rgba(101,217,242,.55); font:.62rem monospace; letter-spacing:.14em; }
-.about { border-top:1px solid rgba(151,206,222,.28); background:url('/Web-Portofolio/images/ocean-adobe-test.webp') center calc(50% + var(--ocean-shift))/cover no-repeat fixed; }
+.about { border-top:1px solid rgba(151,206,222,.28); background:url('/Web-Portofolio/images/ocean-subprojects-v3.webp') center calc(50% + var(--ocean-shift))/cover no-repeat fixed; }
 .about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:12vw; }
 .about h2 em { color:var(--cyan); font-style:normal; }
 .about-grid>div>p { color:#a7bbc4; font-size:1.08rem; line-height:1.75; }
@@ -80,7 +80,7 @@ nav a:hover { color:white; }
 .about-links span { margin-left:28px; color:var(--orange); }
 footer { display:flex; justify-content:space-between; gap:30px; padding:30px clamp(24px,6vw,92px); border-top:1px solid var(--line); color:var(--muted); font-size:.62rem; letter-spacing:.12em; }
 footer a { color:var(--orange); }
-.case-study { min-height:100svh; background-image:linear-gradient(rgba(3,19,29,.72),rgba(3,19,29,.78)),url('/Web-Portofolio/images/ocean-adobe-test.webp'); background-position:center; background-size:cover; background-repeat:no-repeat; background-attachment:fixed; }
+.case-study { min-height:100svh; background-image:linear-gradient(rgba(3,19,29,.72),rgba(3,19,29,.78)),url('/Web-Portofolio/images/ocean-subprojects-v3.webp'); background-position:center; background-size:cover; background-repeat:no-repeat; background-attachment:fixed; }
 .case-header { height:78px; display:flex; justify-content:space-between; align-items:center; padding:0 clamp(24px,6vw,92px); border-bottom:1px solid var(--line); color:var(--muted); font-size:.75rem; }
 .case-header a:hover { color:var(--orange); }
 .case-hero,.case-outline { max-width:1280px; margin:0 auto; padding:clamp(80px,11vw,150px) clamp(24px,6vw,92px); }
