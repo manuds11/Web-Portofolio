@@ -1,0 +1,32 @@
+---
+import "../../styles/global.css";
+
+const projects = [
+  { slug: "multibody-systems", number: "01", title: "Multibody Systems", summary: "Technical case study structure for the real-time constrained multibody framework.", topics: ["Problem and scope", "Physical model", "Solver architecture", "Verification", "Results and media"] },
+  { slug: "harmonic-oscillator", number: "02", title: "Harmonic Oscillator", summary: "Technical case study structure for the oscillator, its numerical integration and energy analysis.", topics: ["Equation of motion", "Integration methods", "Damping", "Energy analysis", "Results and media"] },
+  { slug: "unreal-testing", number: "03", title: "Unreal Engine Basic Testing", summary: "Technical case study structure for the initial motion, orientation and camera experiments.", topics: ["Test objectives", "3D trajectory", "Quaternion orientation", "Camera behaviour", "Results and media"] },
+];
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={project.summary} />
+    <title>{project.title} — Manuel Delgado Portfolio</title>
+  </head>
+  <body>
+    <main class="case-study">
+      <header class="case-header"><a href="/Web-Portofolio/#projects">← Selected Work</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
+      <section class="case-hero"><p class="section-index">{project.number} / CASE STUDY</p><h1>{project.title}</h1><p>{project.summary}</p></section>
+      <section class="case-outline"><p class="section-index">PROVISIONAL STRUCTURE</p><ol>{project.topics.map((topic, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{topic}<small>Content to be added</small></li>)}</ol></section>
+    </main>
+  </body>
+</html>
