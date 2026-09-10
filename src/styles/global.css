@@ -14,7 +14,7 @@ nav a:hover { color:white; }
 .nav-orange { color:var(--orange); }
 .nav-emphasis.nav-orange { border-color:var(--orange); }
 .nav-orange:hover { color:#ffae57; }
-.hero { min-height:100svh; position:relative; display:grid; align-items:center; overflow:hidden; background:url('/Web-Portofolio/images/ocean-vessel-hero.webp') center right/cover no-repeat; }
+.hero { min-height:100svh; position:relative; display:grid; align-items:center; overflow:hidden; background:url('/Web-Portofolio/images/hero-offshore-platform-v2.webp') center center/cover no-repeat; }
 .hero::after { content:""; position:absolute; inset:auto 0 0; height:27%; background:linear-gradient(transparent,var(--ink)); }
 .hero-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(2,13,22,.93) 0%,rgba(2,13,22,.68) 37%,rgba(2,13,22,.08) 68%),linear-gradient(0deg,rgba(3,19,29,.28),transparent 55%); }
 .hero-content { position:relative; z-index:2; width:min(900px,88vw); margin-left:clamp(24px,9vw,150px); padding-top:70px; }
