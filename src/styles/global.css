@@ -41,7 +41,7 @@ nav a:hover { color:white; }
 .milestone-track .next strong,.milestone-track .next small { color:var(--orange); }
 .milestone-track .goal .milestone-dot { border-color:white; }
 .milestone-track a:hover strong { color:var(--orange); }
-.ocean-section { --ocean-shift:0px; position:relative; isolation:isolate; background-image:linear-gradient(to bottom,var(--ink) 0,rgba(3,19,29,.96) 7rem,rgba(3,19,29,.78) 22rem,rgba(3,19,29,.72) 100%),url('/Web-Portofolio/images/ocean-subprojects-v1.webp'); background-position:center top,center calc(50% + var(--ocean-shift)); background-size:cover,cover; background-repeat:no-repeat; background-attachment:scroll,fixed; }
+.ocean-section { --ocean-shift:0px; position:relative; isolation:isolate; background-image:linear-gradient(to bottom,var(--ink) 0,rgba(3,19,29,.96) 7rem,rgba(3,19,29,.72) 22rem,rgba(3,19,29,.66) 100%),url('/Web-Portofolio/images/ocean-subprojects-v2.webp'); background-position:center top,center calc(50% + var(--ocean-shift)); background-size:cover,cover; background-repeat:no-repeat; background-attachment:scroll,fixed; }
 .ocean-section>* { position:relative; z-index:1; }
 .projects { border-top:1px solid var(--line); }
 .projects-intro { margin-bottom:55px; }
@@ -79,7 +79,7 @@ nav a:hover { color:white; }
 .about-links span { margin-left:28px; color:var(--orange); }
 footer { display:flex; justify-content:space-between; gap:30px; padding:30px clamp(24px,6vw,92px); border-top:1px solid var(--line); color:var(--muted); font-size:.62rem; letter-spacing:.12em; }
 footer a { color:var(--orange); }
-.case-study { min-height:100svh; background:radial-gradient(circle at 85% 0,rgba(14,91,122,.25),transparent 34%),var(--ink); }
+.case-study { min-height:100svh; background-image:linear-gradient(rgba(3,19,29,.72),rgba(3,19,29,.78)),url('/Web-Portofolio/images/ocean-subprojects-v2.webp'); background-position:center; background-size:cover; background-repeat:no-repeat; background-attachment:fixed; }
 .case-header { height:78px; display:flex; justify-content:space-between; align-items:center; padding:0 clamp(24px,6vw,92px); border-bottom:1px solid var(--line); color:var(--muted); font-size:.75rem; }
 .case-header a:hover { color:var(--orange); }
 .case-hero,.case-outline { max-width:1280px; margin:0 auto; padding:clamp(80px,11vw,150px) clamp(24px,6vw,92px); }
