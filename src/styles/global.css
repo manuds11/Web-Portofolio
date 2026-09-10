@@ -76,8 +76,10 @@ nav a:hover { color:white; }
 .about::after { z-index:-1; background:rgb(3 19 29 / calc(.62 * (1 - var(--about-reveal)))); }
 .about-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:12vw; }
 .about .section-index,.about h2,.about-grid>div { text-shadow:0 2px 20px rgba(0,8,14,.92); }
+.about-grid>div { position:relative; isolation:isolate; }
+.about-grid>div::before { content:""; position:absolute; z-index:-1; inset:-55px -70px; background:radial-gradient(ellipse at center,rgba(1,12,20,.74) 0%,rgba(1,12,20,.48) 42%,transparent 76%); pointer-events:none; }
 .about h2 em { color:var(--cyan); font-style:normal; }
-.about-grid>div>p { color:#a7bbc4; font-size:1.08rem; line-height:1.75; }
+.about-grid>div>p { color:rgba(244,242,244,.96); font-size:1.08rem; line-height:1.75; }
 .about-links { display:flex; gap:35px; margin-top:45px; }
 .about-links a { border:1px solid var(--orange); color:var(--orange); padding:10px 14px; font-size:.78rem; }
 .about-links span { margin-left:28px; color:var(--orange); }
