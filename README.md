@@ -1,4 +1,4 @@
-# Web Portofolio
+# Web Portfolio
 
 Engineering portfolio for Manuel Delgado, documenting the progression from real-time physics simulation toward Dynamic Positioning.
 
