@@ -17,22 +17,23 @@ const milestones = [
 
 const projects = [
   { number: "01", id: "multibody-systems", title: "Multibody Systems", description: "A modular real-time physics framework for constrained mechanical systems, built with custom C++ solvers.", tags: ["Constraint Modeling", "Lagrange Multipliers"], slides: [
-    { label: "Simulation", title: "Real-time system response", note: "Main simulation video will be placed here.", visual: "multibody" },
-    { label: "Configurations", title: "Multiple system configurations", note: "Comparison of different bodies, joints and initial conditions.", visual: "configurations" },
-    { label: "Energy", title: "Energy evolution", note: "Kinetic, potential and total energy over time.", visual: "energy" },
-    { label: "Constraints", title: "Constraint error", note: "Numerical error and stabilization behaviour during execution.", visual: "error" },
-    { label: "Debugging", title: "Real-time debugging", note: "Solver state and diagnostic values exposed during simulation.", visual: "debug" },
+    { title: "Real-time system response", note: "Main simulation video will be placed here.", visual: "multibody" },
+    { title: "Multiple system configurations", note: "Comparison of different bodies, joints and initial conditions.", visual: "configurations" },
+    { title: "Energy evolution", note: "Kinetic, potential and total energy over time.", visual: "energy" },
+    { title: "Constraint error", note: "Numerical error and stabilization behaviour during execution.", visual: "error" },
+    { title: "Real-time debugging", note: "Solver state and diagnostic values exposed during simulation.", visual: "debug" },
   ]},
   { number: "02", id: "harmonic-oscillator", title: "Harmonic Oscillator", description: "A controlled environment for studying integration, damping, energy and the behaviour of a physical model in real time, and for testing visualisation features.", tags: ["Dynamics", "Energy Analysis", "Numerical Integration"], slides: [
-    { label: "Simulation", title: "Oscillator response", note: "A short simulation video will occupy this first view.", visual: "oscillator" },
-    { label: "Displacement", title: "Position and velocity", note: "Time histories for the state variables of the oscillator.", visual: "wave" },
-    { label: "Energy", title: "Energy conservation", note: "A comparison of kinetic, potential and total energy.", visual: "energy" },
-    { label: "Methods", title: "Integration comparison", note: "Behaviour of the implemented numerical integration methods.", visual: "comparison" },
+    { title: "Oscillator response", note: "A short simulation video will occupy this first view.", visual: "oscillator" },
+    { title: "Position and velocity", note: "Time histories for the state variables of the oscillator.", visual: "wave" },
+    { title: "Energy conservation", note: "A comparison of kinetic, potential and total energy.", visual: "energy" },
+    { title: "Integration comparison", note: "Behaviour of the implemented numerical integration methods.", visual: "comparison" },
   ]},
   { number: "03", id: "unreal-testing", title: "Unreal Engine API Testing", description: "Basic project to test cinematic visualization of meshes.", tags: ["3D Kinematics", "Quaternions", "Camera Systems"], slides: [
-    { label: "3D Motion", title: "Helical trajectory", note: "A provisional view of the first spatial motion tests.", visual: "helical" },
-    { label: "Orientation", title: "Quaternion orientation", note: "Body attitude and local reference axes during motion.", visual: "orientation" },
-    { label: "Camera", title: "Camera tracking", note: "Tests of viewpoint, following behaviour and scene inspection.", visual: "camera" },
+    { title: "Parameterized 3D Motion", note: "A parameterized 3D trajectory is used to explore Unreal Engine capabilities within a virtual environment.", visual: "helical" },
+    { title: "Position & Orientation", note: "SetActorLocation and SetActorRotation are core Unreal Engine functions for controlling body motion. Quaternion-based rotations are supported directly by the Unreal Engine API.", visual: "orientation" },
+    { title: "Runtime Controls", note: "Several runtime controls useful for simulation visualization are tested, including keyboard-controlled cameras and simulation start/stop.", visual: "camera" },
+    { title: "Real-Time Parameter Control", note: "Sliders are used to modify simulation parameters in real time, including vertical velocity, angular frequency and trajectory radius.", visual: "controls" },
   ]},
 ];
 ---
@@ -62,7 +63,7 @@ const projects = [
         <div class="project-list">{projects.map(project => <article class="project-card" id={project.id}>
           <div class="project-copy"><h3>{project.title}</h3><p>{project.description}</p><ul>{project.tags.map(tag => <li>{tag}</li>)}</ul><a href={`/Web-Portofolio/projects/${project.id}/`}>View full project <span>↗</span></a></div>
           <div class="project-media" data-carousel data-project={project.title}>
-            <div class="carousel-viewport" data-track>{project.slides.map((slide, index) => <figure class="media-slide" data-slide><div class="technical-visual" aria-hidden="true"><div class="grid-lines"></div><span class="visual-label">PROVISIONAL MEDIA</span></div><figcaption><span>{slide.label}</span><strong>{slide.title}</strong><p>{slide.note}</p></figcaption></figure>)}</div>
+            <div class="carousel-viewport" data-track>{project.slides.map((slide) => <figure class="media-slide" data-slide><div class="technical-visual" aria-hidden="true"><div class="grid-lines"></div><span class="visual-label">PROVISIONAL MEDIA</span></div><figcaption><strong>{slide.title}</strong><p>{slide.note}</p></figcaption></figure>)}</div>
             <div class="carousel-controls"><div class="slide-count" aria-live="polite"><span data-current>01</span> / {String(project.slides.length).padStart(2, "0")}</div><div><button type="button" data-prev aria-label={`Previous ${project.title} media`}>←</button><button type="button" data-next aria-label={`Next ${project.title} media`}>→</button></div></div>
           </div>
         </article>)}</div>
