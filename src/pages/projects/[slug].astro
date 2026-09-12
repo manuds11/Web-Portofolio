@@ -5,7 +5,7 @@ export function getStaticPaths() {
   const projects = [
     { slug: "multibody-systems", title: "Multibody Systems", summary: "Technical case study structure for the real-time constrained multibody framework.", topics: ["Problem and scope", "Physical model", "Solver architecture", "Verification", "Results and media"] },
     { slug: "harmonic-oscillator", title: "Harmonic Oscillator", summary: "Technical case study structure for the oscillator, its numerical integration and energy analysis.", topics: ["Equation of motion", "Integration methods", "Damping", "Energy analysis", "Results and media"] },
-    { slug: "unreal-testing", title: "Unreal Engine Basic Testing", summary: "Technical case study structure for the initial motion, orientation and camera experiments.", topics: ["Test objectives", "3D trajectory", "Quaternion orientation", "Camera behaviour", "Results and media"] },
+    { slug: "unreal-testing", title: "Unreal Engine API Testing", summary: "Basic project to test cinematic visualization of meshes.", topics: ["Test objectives", "3D trajectory", "Quaternion orientation", "Camera behaviour", "Results and media"] },
   ];
   return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
 }
