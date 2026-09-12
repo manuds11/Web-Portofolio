@@ -21,7 +21,7 @@ const projects = [
     { title: "Modular System Configuration", note: "Bodies, spring-dampers and rigid rods can be assembled into different mechanical configurations.", visual: "configurations" },
     { title: "Spring-Damper Forces", note: "Forces from multiple spring-damper elements are evaluated and assembled for each body.", visual: "forces" },
     { title: "Rigid-Rod Constraints", note: "Rigid connections are enforced through a constraint solver based on Lagrange multipliers.", visual: "constraints" },
-    { title: "Numerical Verification", note: "Energy evolution and constraint error are monitored to assess the numerical behaviour of the simulation.", visual: "verification" },
+    { title: "Rod Length Correction", note: "A position-level correction is applied to prevent rod-length drift caused by unavoidable numerical error.", visual: "rod-length-correction" },
   ]},
   { number: "02", id: "harmonic-oscillator", title: "Harmonic Oscillator", description: "The most basic differential equation problem in dynamics, with an analytical solution that can be used to compare numerical integration methods and validate their implementation.", tags: ["Numerical Integration", "Fixed Time Step", "Data Analysis"], slides: [
     { title: "Real-Time Numerical Integration", note: "The oscillator is simulated and visualized in real time within Unreal Engine.", visual: "oscillator" },
