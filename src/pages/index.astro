@@ -16,12 +16,12 @@ const milestones = [
 ];
 
 const projects = [
-  { number: "01", id: "multibody-systems", title: "Multibody Systems", description: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.", tags: ["Constraint Modeling", "Lagrange Multipliers"], slides: [
-    { title: "Real-time system response", note: "Main simulation video will be placed here.", visual: "multibody" },
-    { title: "Multiple system configurations", note: "Comparison of different bodies, joints and initial conditions.", visual: "configurations" },
-    { title: "Energy evolution", note: "Kinetic, potential and total energy over time.", visual: "energy" },
-    { title: "Constraint error", note: "Numerical error and stabilization behaviour during execution.", visual: "error" },
-    { title: "Real-time debugging", note: "Solver state and diagnostic values exposed during simulation.", visual: "debug" },
+  { number: "01", id: "multibody-systems", title: "Multibody Systems", description: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.", tags: ["Modular Architecture", "Constraint Modeling", "Lagrange Multipliers"], slides: [
+    { title: "Real-Time Multibody Simulation", note: "A triple-pendulum configuration with tension springs demonstrates the coupled motion of the system.", visual: "multibody" },
+    { title: "Modular System Configuration", note: "Bodies, spring-dampers and rigid rods can be assembled into different mechanical configurations.", visual: "configurations" },
+    { title: "Spring-Damper Forces", note: "Forces from multiple spring-damper elements are evaluated and assembled for each body.", visual: "forces" },
+    { title: "Rigid-Rod Constraints", note: "Rigid connections are enforced through a constraint solver based on Lagrange multipliers.", visual: "constraints" },
+    { title: "Numerical Verification", note: "Energy evolution and constraint error are monitored to assess the numerical behaviour of the simulation.", visual: "verification" },
   ]},
   { number: "02", id: "harmonic-oscillator", title: "Harmonic Oscillator", description: "The most basic differential equation problem in dynamics, with an analytical solution that can be used to compare numerical integration methods and validate their implementation.", tags: ["Numerical Integration", "Fixed Time Step", "Data Analysis"], slides: [
     { title: "Real-Time Numerical Integration", note: "The oscillator is simulated and visualized in real time within Unreal Engine.", visual: "oscillator" },
