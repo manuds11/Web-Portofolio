@@ -53,7 +53,7 @@ const projects = [
       </header>
       <section class="hero" id="top"><div class="hero-shade"></div><div class="hero-content"><h1>Unreal Engine<br />Dynamic Systems</h1><p class="hero-copy">Real-time physics simulations.</p><a class="hero-link" href="#roadmap">Explore the development path <span>↓</span></a></div></section>
       <section class="roadmap section-shell" id="roadmap">
-        <div class="section-heading"><div><p class="section-index">DEVELOPMENT PATH</p><h2>Planned path to DP</h2></div></div>
+        <div class="section-heading"><div><p class="section-index">DEVELOPMENT PATH</p><h2>Objective: Dynamic Positioning algorithm</h2></div></div>
         <ol class="milestone-track">{milestones.map((item, index) => <li class={item.state}>{item.href ? <a href={item.href}><span class="milestone-number">{String(index + 1).padStart(2, "0")}</span><span class="milestone-dot"></span><strong>{item.title}</strong><small>{item.status}</small></a> : <div><span class="milestone-number">{String(index + 1).padStart(2, "0")}</span><span class="milestone-dot"></span><strong>{item.title}</strong><small>{item.status}</small></div>}</li>)}</ol>
       </section>
       <div class="ocean-section" data-ocean-section>
