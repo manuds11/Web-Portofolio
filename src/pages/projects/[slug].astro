@@ -2,12 +2,12 @@
 import "../../styles/global.css";
 
 export function getStaticPaths() {
-  const projects = [
-    { slug: "multibody-systems", title: "Multibody Systems", summary: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.", topics: ["Problem and scope", "Physical model", "Solver architecture", "Verification", "Results and media"] },
-    { slug: "harmonic-oscillator", title: "Harmonic Oscillator", summary: "The most basic differential equation problem in dynamics, with an analytical solution that can be used to compare numerical integration methods and validate their implementation.", topics: ["Equation of motion", "Integration methods", "Damping", "Energy analysis", "Results and media"] },
-    { slug: "unreal-testing", title: "Unreal Engine API Testing", summary: "Basic project to test cinematic visualization of meshes.", topics: ["Test objectives", "3D trajectory", "Quaternion orientation", "Camera behaviour", "Results and media"] },
-  ];
-  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+  const project = {
+    slug: "multibody-systems",
+    title: "Multibody Systems",
+    summary: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.",
+  };
+  return [{ params: { slug: project.slug }, props: { project } }];
 }
 
 const { project } = Astro.props;
@@ -24,8 +24,47 @@ const { project } = Astro.props;
   <body>
     <main class="case-study">
       <header class="case-header"><a href="/Web-Portofolio/#projects">← Projects</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
-      <section class="case-hero"><p class="section-index">SUBPROJECT</p><h1>{project.title}</h1><p>{project.summary}</p></section>
-      <section class="case-outline"><p class="section-index">PROVISIONAL STRUCTURE</p><ol>{project.topics.map((topic, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{topic}<small>Content to be added</small></li>)}</ol></section>
+      <section class="case-hero"><p class="section-index">PROJECT DETAILS</p><h1>Constraint Physics</h1><p>{project.summary}</p></section>
+      <article class="constraint-article">
+        <section class="constraint-section">
+          <p class="section-index">CONSTRAINT KINEMATICS</p>
+          <h2>Geometric compatibility</h2>
+          <p>A rigid connection is defined by a holonomic constraint.</p>
+          <div class="equation">C(q) = 0</div>
+          <p>For the normalized rod used here,</p>
+          <div class="equation">C(q) = ‖p<sub>B</sub> − p<sub>A</sub>‖ − L = 0</div>
+          <p>If the constraint remains satisfied over time, its velocity- and acceleration-level conditions must also vanish.</p>
+          <div class="equation-stack">
+            <div class="equation">Jq̇ = 0</div>
+            <div class="equation equation-accent">Jq̈ + J̇q̇ = 0</div>
+          </div>
+          <p>Here, <span class="inline-equation">J = ∂C/∂q</span> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
+        </section>
+
+        <section class="constraint-section">
+          <p class="section-index">CONSTRAINT FORCES</p>
+          <h2>Solving for the reaction force</h2>
+          <p>The equations of motion include the constraint force through the Lagrange multiplier λ.</p>
+          <div class="equation">Mq̈ = Q<sub>ext</sub> + J<sup>T</sup>λ</div>
+          <div class="equation">q̈ = M<sup>−1</sup>Q<sub>ext</sub> + M<sup>−1</sup>J<sup>T</sup>λ</div>
+          <p>Substituting this acceleration into the compatibility condition gives</p>
+          <div class="equation equation-wide">JM<sup>−1</sup>J<sup>T</sup>λ = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇).</div>
+        </section>
+
+        <section class="constraint-section solver-section">
+          <p class="section-index">CONSTRAINT SOLVER</p>
+          <h2>A linear system at each timestep</h2>
+          <div class="solver-definitions">
+            <div class="equation">A = JM<sup>−1</sup>J<sup>T</sup></div>
+            <div class="equation">b = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
+          </div>
+          <div class="equation equation-final">Aλ = b</div>
+          <p>For the normalized rod constraint, each component of λ has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
+          <div class="constraint-chain" aria-label="Constraint solver derivation">
+            <span>C(q) = 0</span><b>→</b><span>Jq̇ = 0</span><b>→</b><span>Jq̈ + J̇q̇ = 0</span><b>→</b><span>Aλ = b</span>
+          </div>
+        </section>
+      </article>
     </main>
   </body>
 </html>
