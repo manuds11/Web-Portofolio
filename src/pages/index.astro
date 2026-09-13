@@ -31,7 +31,7 @@ const projects = [
     { title: "Semi-Implicit Euler", note: "The numerical response of the Semi-Implicit Euler method is compared with the initial system energy.", visual: "semi-implicit-euler" },
   ]},
   { number: "03", id: "unreal-testing", title: "Unreal Engine API Testing", description: "Basic project to test cinematic visualization of meshes.", tags: ["3D Kinematics", "Quaternions", "Camera Systems"], slides: [
-    { title: "3D Motion", note: "A parameterized 3D trajectory is used to explore Unreal Engine capabilities within a virtual environment.", visual: "helical", image: "/Web-Portofolio/images/debug-probe-3d-motion.webp", alt: "Unreal Engine simulation showing a parameterized three-dimensional trajectory" },
+    { title: "3D Motion", note: "A parameterized 3D trajectory is used to explore Unreal Engine capabilities within a virtual environment.", visual: "helical", image: "/Web-Portofolio/images/debug-probe-3d-motion.webp", video: "/Web-Portofolio/media/debug-probe-3d-motion.mp4", alt: "Unreal Engine simulation showing a parameterized three-dimensional trajectory" },
     { title: "Position & Orientation", note: "SetActorLocation and SetActorRotation are core Unreal Engine functions for controlling body motion. Quaternion-based rotations are supported directly by the Unreal Engine API.", visual: "orientation", image: "/Web-Portofolio/images/debug-probe-position-orientation.webp", alt: "Unreal Engine simulation showing a body, its orientation axes and a parameterized trajectory" },
     { title: "Runtime Controls", note: "Several runtime controls useful for simulation visualization are tested, including keyboard-controlled cameras and simulation start/stop.", visual: "camera", image: "/Web-Portofolio/images/debug-probe-runtime-controls.webp", alt: "Unreal Engine simulation with keyboard controls and runtime debugging information" },
     { title: "Real-Time Parameter Control", note: "Sliders are used to modify simulation parameters in real time, including vertical velocity, angular frequency and trajectory radius.", visual: "controls", image: "/Web-Portofolio/images/debug-probe-parameter-control.webp", alt: "Unreal Engine simulation with real-time frequency, radius and vertical velocity controls" },
@@ -64,7 +64,7 @@ const projects = [
         <div class="project-list">{projects.map(project => <article class="project-card" id={project.id}>
           <div class="project-copy"><h3>{project.title}</h3><p>{project.description}</p><ul>{project.tags.map(tag => <li>{tag}</li>)}</ul><a href={`/Web-Portofolio/projects/${project.id}/`}>View full project <span>↗</span></a></div>
           <div class="project-media" data-carousel data-project={project.title}>
-            <div class="carousel-viewport" data-track>{project.slides.map((slide) => <figure class="media-slide" data-slide><div class="technical-visual">{"video" in slide && slide.video ? <video autoplay muted loop playsinline preload="metadata" poster={slide.poster} aria-label={`${slide.title} Unreal Engine demonstration`}><source src={slide.video} type="video/mp4" /></video> : "image" in slide && slide.image ? <img src={slide.image} alt={slide.alt} loading="lazy" decoding="async" /> : <div class="provisional-visual" aria-hidden="true"><div class="grid-lines"></div><span class="visual-label">PROVISIONAL MEDIA</span></div>}</div><figcaption><strong>{slide.title}</strong><p>{slide.note}</p></figcaption></figure>)}</div>
+            <div class="carousel-viewport" data-track>{project.slides.map((slide) => <figure class="media-slide" data-slide><div class="technical-visual">{"video" in slide && slide.video && "image" in slide && slide.image ? <button class="media-preview video-preview" type="button" data-video-open data-video-src={slide.video} data-media-title={slide.title} aria-label={`Play ${slide.title} video`}><img src={slide.image} alt={slide.alt} loading="lazy" decoding="async" /><span class="play-button" aria-hidden="true">▶</span><span class="play-label">PLAY VIDEO</span></button> : "image" in slide && slide.image ? <button class="media-preview image-preview" type="button" data-image-open data-image-src={slide.image} data-media-title={slide.title} aria-label={`Enlarge ${slide.title} image`}><img src={slide.image} alt={slide.alt} loading="lazy" decoding="async" /><span class="enlarge-label">ENLARGE ↗</span></button> : <div class="provisional-visual" aria-hidden="true"><div class="grid-lines"></div><span class="visual-label">PROVISIONAL MEDIA</span></div>}</div><figcaption><strong>{slide.title}</strong><p>{slide.note}</p></figcaption></figure>)}</div>
             <div class="carousel-controls"><div class="slide-count" aria-live="polite"><span data-current>01</span> / {String(project.slides.length).padStart(2, "0")}</div><div><button type="button" data-prev aria-label={`Previous ${project.title} media`}>←</button><button type="button" data-next aria-label={`Next ${project.title} media`}>→</button></div></div>
           </div>
         </article>)}</div>
@@ -73,6 +73,13 @@ const projects = [
       <footer><span>MANUEL DELGADO</span><span>PROJECT PORTFOLIO</span><a href="#top">Back to top ↑</a></footer>
       </div>
     </main>
+    <div class="video-modal" data-video-modal hidden role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+      <div class="video-dialog">
+        <div class="video-modal-header"><span id="video-modal-title" data-video-modal-title>Simulation video</span><button type="button" data-video-close aria-label="Close video">×</button></div>
+        <video data-video-player controls playsinline preload="metadata" hidden></video>
+        <img data-image-viewer alt="" hidden />
+      </div>
+    </div>
     <script>
       document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
         const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-slide]"));
@@ -87,6 +94,52 @@ const projects = [
         carousel.addEventListener("touchend", (event) => { const distance = (event.changedTouches[0]?.clientX ?? 0) - touchStart; if (Math.abs(distance) > 45) show(active + (distance < 0 ? 1 : -1)); }, { passive: true });
         track?.addEventListener("scroll", () => { const width = track.clientWidth; if (!width) return; active = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / width))); if (counter) counter.textContent = String(active + 1).padStart(2, "0"); }, { passive: true });
       });
+
+      const videoModal = document.querySelector<HTMLElement>("[data-video-modal]");
+      const videoPlayer = videoModal?.querySelector<HTMLVideoElement>("[data-video-player]");
+      const imageViewer = videoModal?.querySelector<HTMLImageElement>("[data-image-viewer]");
+      const videoTitle = videoModal?.querySelector<HTMLElement>("[data-video-modal-title]");
+      const closeButton = videoModal?.querySelector<HTMLButtonElement>("[data-video-close]");
+      let videoTrigger: HTMLElement | null = null;
+      const closeVideo = () => {
+        if (!videoModal || videoModal.hidden) return;
+        videoPlayer?.pause();
+        videoPlayer?.removeAttribute("src");
+        videoPlayer?.load();
+        if (videoPlayer) videoPlayer.hidden = true;
+        if (imageViewer) { imageViewer.hidden = true; imageViewer.removeAttribute("src"); }
+        videoModal.hidden = true;
+        document.body.classList.remove("modal-open");
+        videoTrigger?.focus();
+      };
+      document.querySelectorAll<HTMLElement>("[data-video-open]").forEach((trigger) => trigger.addEventListener("click", () => {
+        if (!videoModal || !videoPlayer) return;
+        videoTrigger = trigger;
+        videoPlayer.hidden = false;
+        if (imageViewer) imageViewer.hidden = true;
+        videoPlayer.src = trigger.dataset.videoSrc ?? "";
+        if (videoTitle) videoTitle.textContent = trigger.dataset.mediaTitle ?? "Simulation video";
+        videoModal.hidden = false;
+        document.body.classList.add("modal-open");
+        closeButton?.focus();
+        videoPlayer.play().catch(() => undefined);
+      }));
+      document.querySelectorAll<HTMLElement>("[data-image-open]").forEach((trigger) => trigger.addEventListener("click", () => {
+        if (!videoModal || !imageViewer) return;
+        videoTrigger = trigger;
+        videoPlayer?.pause();
+        if (videoPlayer) videoPlayer.hidden = true;
+        imageViewer.src = trigger.dataset.imageSrc ?? "";
+        imageViewer.alt = trigger.getAttribute("aria-label") ?? "Enlarged simulation image";
+        imageViewer.hidden = false;
+        if (videoTitle) videoTitle.textContent = trigger.dataset.mediaTitle ?? "Simulation image";
+        videoModal.hidden = false;
+        document.body.classList.add("modal-open");
+        closeButton?.focus();
+      }));
+      closeButton?.addEventListener("click", closeVideo);
+      videoModal?.addEventListener("click", (event) => { if (event.target === videoModal) closeVideo(); });
+      document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeVideo(); });
 
       const oceanSection = document.querySelector<HTMLElement>("[data-ocean-section]");
       const aboutSection = document.querySelector<HTMLElement>("[data-about]");
