@@ -24,7 +24,7 @@ const { project } = Astro.props;
   <body>
     <main class="case-study">
       <header class="case-header"><a href="/Web-Portofolio/#projects">← Projects</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
-      <section class="case-hero"><p class="section-index">PROJECT DETAILS</p><h1>Constraint Physics</h1><p>{project.summary}</p></section>
+      <section class="case-hero"><p class="section-index">MULTIBODY SYSTEMS</p><h1>Constraint Physics</h1><p>Rigid-rod constraints and the system solved at each simulation timestep.</p></section>
       <article class="constraint-article">
         <section class="constraint-section">
           <p class="section-index">CONSTRAINT KINEMATICS</p>
@@ -34,10 +34,8 @@ const { project } = Astro.props;
           <p>For the normalized rod used here,</p>
           <div class="equation">C(q) = ‖p<sub>B</sub> − p<sub>A</sub>‖ − L = 0</div>
           <p>If the constraint remains satisfied over time, its velocity- and acceleration-level conditions must also vanish.</p>
-          <div class="equation-stack">
-            <div class="equation">Jq̇ = 0</div>
-            <div class="equation equation-accent">Jq̈ + J̇q̇ = 0</div>
-          </div>
+          <div class="equation">Jq̇ = 0</div>
+          <div class="equation">Jq̈ + J̇q̇ = 0</div>
           <p>Here, <span class="inline-equation">J = ∂C/∂q</span> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
         </section>
 
@@ -48,16 +46,14 @@ const { project } = Astro.props;
           <div class="equation">Mq̈ = Q<sub>ext</sub> + J<sup>T</sup>λ</div>
           <div class="equation">q̈ = M<sup>−1</sup>Q<sub>ext</sub> + M<sup>−1</sup>J<sup>T</sup>λ</div>
           <p>Substituting this acceleration into the compatibility condition gives</p>
-          <div class="equation equation-wide">JM<sup>−1</sup>J<sup>T</sup>λ = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇).</div>
+          <div class="equation equation-wide">JM<sup>−1</sup>J<sup>T</sup>λ = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
         </section>
 
         <section class="constraint-section solver-section">
           <p class="section-index">CONSTRAINT SOLVER</p>
           <h2>A linear system at each timestep</h2>
-          <div class="solver-definitions">
-            <div class="equation">A = JM<sup>−1</sup>J<sup>T</sup></div>
-            <div class="equation">b = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
-          </div>
+          <div class="equation">A = JM<sup>−1</sup>J<sup>T</sup></div>
+          <div class="equation">b = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
           <div class="equation equation-final">Aλ = b</div>
           <p>For the normalized rod constraint, each component of λ has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
           <div class="constraint-chain" aria-label="Constraint solver derivation">
