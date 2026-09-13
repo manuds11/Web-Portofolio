@@ -30,34 +30,34 @@ const { project } = Astro.props;
           <p class="section-index">CONSTRAINT KINEMATICS</p>
           <h2>Geometric compatibility</h2>
           <p>A rigid connection is defined by a holonomic constraint.</p>
-          <div class="equation">C(q) = 0</div>
+          <div class="equation"><math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mn>0</mn></math></div>
           <p>For the normalized rod used here,</p>
-          <div class="equation">C(q) = ‖p<sub>B</sub> − p<sub>A</sub>‖ − L = 0</div>
+          <div class="equation"><math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mo>‖</mo><msub><mi>p</mi><mi>B</mi></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub><mo>‖</mo><mo>−</mo><mi>L</mi><mo>=</mo><mn>0</mn></math></div>
           <p>If the constraint remains satisfied over time, its velocity- and acceleration-level conditions must also vanish.</p>
-          <div class="equation">Jq̇ = 0</div>
-          <div class="equation">Jq̈ + J̇q̇ = 0</div>
-          <p>Here, <span class="inline-equation">J = ∂C/∂q</span> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
+          <div class="equation"><math display="block"><mi>J</mi><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn></math></div>
+          <div class="equation"><math display="block"><mi>J</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn></math></div>
+          <p>Here, <span class="inline-equation"><math><mi>J</mi><mo>=</mo><mfrac><mrow><mo>∂</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mi>q</mi></mrow></mfrac></math></span> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
         </section>
 
         <section class="constraint-section">
           <p class="section-index">CONSTRAINT FORCES</p>
           <h2>Solving for the reaction force</h2>
           <p>The equations of motion include the constraint force through the Lagrange multiplier λ.</p>
-          <div class="equation">Mq̈ = Q<sub>ext</sub> + J<sup>T</sup>λ</div>
-          <div class="equation">q̈ = M<sup>−1</sup>Q<sub>ext</sub> + M<sup>−1</sup>J<sup>T</sup>λ</div>
+          <div class="equation"><math display="block"><mi>M</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>=</mo><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi></math></div>
+          <div class="equation"><math display="block"><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>=</mo><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi></math></div>
           <p>Substituting this acceleration into the compatibility condition gives</p>
-          <div class="equation equation-wide">JM<sup>−1</sup>J<sup>T</sup>λ = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
+          <div class="equation"><math display="block"><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi><mo>=</mo><mo>−</mo><mo>(</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>)</mo></math></div>
         </section>
 
         <section class="constraint-section solver-section">
           <p class="section-index">CONSTRAINT SOLVER</p>
           <h2>A linear system at each timestep</h2>
-          <div class="equation">A = JM<sup>−1</sup>J<sup>T</sup></div>
-          <div class="equation">b = −(JM<sup>−1</sup>Q<sub>ext</sub> + J̇q̇)</div>
-          <div class="equation equation-final">Aλ = b</div>
+          <div class="equation"><math display="block"><mi>A</mi><mo>=</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup></math></div>
+          <div class="equation"><math display="block"><mi>b</mi><mo>=</mo><mo>−</mo><mo>(</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>)</mo></math></div>
+          <div class="equation equation-final"><math display="block"><mi>A</mi><mi>λ</mi><mo>=</mo><mi>b</mi></math></div>
           <p>For the normalized rod constraint, each component of λ has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
           <div class="constraint-chain" aria-label="Constraint solver derivation">
-            <span>C(q) = 0</span><b>→</b><span>Jq̇ = 0</span><b>→</b><span>Jq̈ + J̇q̇ = 0</span><b>→</b><span>Aλ = b</span>
+            <math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>J</mi><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>J</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>A</mi><mi>λ</mi><mo>=</mo><mi>b</mi></math>
           </div>
         </section>
       </article>
