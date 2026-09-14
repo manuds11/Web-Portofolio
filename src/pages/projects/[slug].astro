@@ -42,7 +42,7 @@ const { project } = Astro.props;
 
         <section class="constraint-section">
           <p class="section-index">CONSTRAINT FORCES</p>
-          <h2>Solving for the reaction force</h2>
+          <h2>Computing the constraint forces</h2>
           <p>The equations of motion include the constraint force through the Lagrange multiplier <Math formula={String.raw`\boldsymbol{\lambda}`} />.</p>
           <Math formula={String.raw`\mathbf{M}\ddot{\mathbf{q}}=\mathbf{Q}_{\mathrm{ext}}+\mathbf{J}^{\mathsf{T}}\boldsymbol{\lambda}`} display />
           <Math formula={String.raw`\ddot{\mathbf{q}}=\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\mathbf{M}^{-1}\mathbf{J}^{\mathsf{T}}\boldsymbol{\lambda}`} display />
