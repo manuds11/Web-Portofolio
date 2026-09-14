@@ -31,34 +31,34 @@ const { project } = Astro.props;
           <p class="section-index">CONSTRAINT KINEMATICS</p>
           <h2>Geometric compatibility</h2>
           <p>A rigid connection is defined by a holonomic constraint.</p>
-          <Math formula="C(\mathbf{q})=0" display />
+          <Math formula={String.raw`C(\mathbf{q})=0`} display />
           <p>For the normalized rod used here,</p>
-          <Math formula="C(\mathbf{q})=\lVert\mathbf{p}_B-\mathbf{p}_A\rVert-L=0" display />
+          <Math formula={String.raw`C(\mathbf{q})=\lVert\mathbf{p}_{\mathrm{B}}-\mathbf{p}_{\mathrm{A}}\rVert-L=0`} display />
           <p>If the constraint remains satisfied over time, its velocity- and acceleration-level conditions must also vanish.</p>
-          <Math formula="\mathbf{J}\dot{\mathbf{q}}=0" display />
-          <Math formula="\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0" display />
-          <p>Here, <Math formula="\mathbf{J}=\frac{\partial C}{\partial \mathbf{q}}" /> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
+          <Math formula={String.raw`\mathbf{J}\dot{\mathbf{q}}=0`} display />
+          <Math formula={String.raw`\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0`} display />
+          <p>Here, <Math formula={String.raw`\mathbf{J}=\frac{\partial C}{\partial \mathbf{q}}`} /> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
         </section>
 
         <section class="constraint-section">
           <p class="section-index">CONSTRAINT FORCES</p>
           <h2>Solving for the reaction force</h2>
-          <p>The equations of motion include the constraint force through the Lagrange multiplier <Math formula="\boldsymbol{\lambda}" />.</p>
-          <Math formula="\mathbf{M}\ddot{\mathbf{q}}=\mathbf{Q}_{\mathrm{ext}}+\mathbf{J}^{T}\boldsymbol{\lambda}" display />
-          <Math formula="\ddot{\mathbf{q}}=\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\mathbf{M}^{-1}\mathbf{J}^{T}\boldsymbol{\lambda}" display />
+          <p>The equations of motion include the constraint force through the Lagrange multiplier <Math formula={String.raw`\boldsymbol{\lambda}`} />.</p>
+          <Math formula={String.raw`\mathbf{M}\ddot{\mathbf{q}}=\mathbf{Q}_{\mathrm{ext}}+\mathbf{J}^{\mathsf{T}}\boldsymbol{\lambda}`} display />
+          <Math formula={String.raw`\ddot{\mathbf{q}}=\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\mathbf{M}^{-1}\mathbf{J}^{\mathsf{T}}\boldsymbol{\lambda}`} display />
           <p>Substituting this acceleration into the compatibility condition gives</p>
-          <Math formula="\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{T}\boldsymbol{\lambda}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)" display />
+          <Math formula={String.raw`\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{\mathsf{T}}\boldsymbol{\lambda}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)`} display />
         </section>
 
         <section class="constraint-section solver-section">
           <p class="section-index">CONSTRAINT SOLVER</p>
           <h2>A linear system at each timestep</h2>
-          <Math formula="\mathbf{A}=\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{T}" display />
-          <Math formula="\mathbf{b}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)" display />
-          <div class="equation-final"><Math formula="\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}" display /></div>
-          <p>For the normalized rod constraint, each component of <Math formula="\boldsymbol{\lambda}" /> has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
+          <Math formula={String.raw`\mathbf{A}=\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{\mathsf{T}}`} display />
+          <Math formula={String.raw`\mathbf{b}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)`} display />
+          <div class="equation-final"><Math formula={String.raw`\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}`} display /></div>
+          <p>For the normalized rod constraint, each component of <Math formula={String.raw`\boldsymbol{\lambda}`} /> has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
           <div class="constraint-chain" aria-label="Constraint solver derivation">
-            <Math formula="C(\mathbf{q})=0\quad\rightarrow\quad\mathbf{J}\dot{\mathbf{q}}=0\quad\rightarrow\quad\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0\quad\rightarrow\quad\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}" display />
+            <Math formula={String.raw`C(\mathbf{q})=0\;\longrightarrow\;\mathbf{J}\dot{\mathbf{q}}=0\;\longrightarrow\;\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0\;\longrightarrow\;\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}`} display />
           </div>
         </section>
       </article>

@@ -126,14 +126,17 @@ footer a { color:var(--orange); }
 .constraint-section .section-index { margin-bottom:12px; font-size:.7rem; }
 .constraint-section h2 { max-width:760px; margin:0 0 30px; font-size:clamp(1.9rem,3.4vw,2.8rem); line-height:1.08; letter-spacing:-.035em; font-weight:500; }
 .constraint-section>p:not(.section-index) { max-width:740px; margin:18px 0; color:#c5d5db; font-size:1rem; line-height:1.75; }
-.equation { width:100%; max-width:100%; margin:20px 0; padding:8px 12px; border:0; background:transparent; color:#f3fbfd; text-align:center; overflow-x:auto; }
-.equation math { margin:0 auto; color:inherit; font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif; font-size:clamp(1.3rem,2vw,1.6rem); }
-.inline-equation { display:inline-flex; align-items:center; margin:0 .15em; color:#edfaff; white-space:nowrap; }
-.inline-equation math { font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif; font-size:1.05em; }
+.math-display { width:100%; margin:20px 0; padding:8px 12px; color:#f3fbfd; text-align:center; overflow-x:auto; overflow-y:hidden; }
+.math-display .katex-display { margin:0; }
+.math-display .katex { font-size:clamp(1.25rem,1.8vw,1.5rem); }
+.math-inline { display:inline-block; margin:0 .16em; color:#edfaff; vertical-align:-.06em; white-space:nowrap; }
+.math-inline .katex { font-size:1em; }
 .equation-final { width:min(300px,100%); margin:30px auto; padding:14px 22px; border:1px solid var(--orange); color:var(--orange); }
-.equation-final math { font-size:clamp(1.55rem,2.4vw,1.9rem); }
+.equation-final .math-display { margin:0; padding:0; color:inherit; }
+.equation-final .katex { font-size:clamp(1.45rem,2vw,1.7rem); }
 .constraint-chain { margin-top:42px; padding:22px 12px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow-x:auto; text-align:center; }
-.constraint-chain math { margin:0 auto; color:#f3fbfd; font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif; font-size:clamp(1rem,1.5vw,1.2rem); }
+.constraint-chain .math-display { width:max-content; min-width:100%; margin:0; padding:0; }
+.constraint-chain .katex { font-size:clamp(.95rem,1.3vw,1.08rem); }
 @media (max-width:1050px) { .identity span { display:none; } }
 @media (max-width:850px) {
   .site-header { height:66px; }
