@@ -1,5 +1,6 @@
 ---
 import "../../styles/global.css";
+import Math from "../../components/Math.astro";
 
 export function getStaticPaths() {
   const project = {
@@ -30,34 +31,34 @@ const { project } = Astro.props;
           <p class="section-index">CONSTRAINT KINEMATICS</p>
           <h2>Geometric compatibility</h2>
           <p>A rigid connection is defined by a holonomic constraint.</p>
-          <div class="equation"><math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mn>0</mn></math></div>
+          <Math formula="C(\mathbf{q})=0" display />
           <p>For the normalized rod used here,</p>
-          <div class="equation"><math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mo>‖</mo><msub><mi>p</mi><mi>B</mi></msub><mo>−</mo><msub><mi>p</mi><mi>A</mi></msub><mo>‖</mo><mo>−</mo><mi>L</mi><mo>=</mo><mn>0</mn></math></div>
+          <Math formula="C(\mathbf{q})=\lVert\mathbf{p}_B-\mathbf{p}_A\rVert-L=0" display />
           <p>If the constraint remains satisfied over time, its velocity- and acceleration-level conditions must also vanish.</p>
-          <div class="equation"><math display="block"><mi>J</mi><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn></math></div>
-          <div class="equation"><math display="block"><mi>J</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn></math></div>
-          <p>Here, <span class="inline-equation"><math><mi>J</mi><mo>=</mo><mfrac><mrow><mo>∂</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mi>q</mi></mrow></mfrac></math></span> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
+          <Math formula="\mathbf{J}\dot{\mathbf{q}}=0" display />
+          <Math formula="\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0" display />
+          <p>Here, <Math formula="\mathbf{J}=\frac{\partial C}{\partial \mathbf{q}}" /> is the constraint Jacobian. The acceleration condition keeps the motion compatible with the geometry of the rigid connection.</p>
         </section>
 
         <section class="constraint-section">
           <p class="section-index">CONSTRAINT FORCES</p>
           <h2>Solving for the reaction force</h2>
-          <p>The equations of motion include the constraint force through the Lagrange multiplier λ.</p>
-          <div class="equation"><math display="block"><mi>M</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>=</mo><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi></math></div>
-          <div class="equation"><math display="block"><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>=</mo><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi></math></div>
+          <p>The equations of motion include the constraint force through the Lagrange multiplier <Math formula="\boldsymbol{\lambda}" />.</p>
+          <Math formula="\mathbf{M}\ddot{\mathbf{q}}=\mathbf{Q}_{\mathrm{ext}}+\mathbf{J}^{T}\boldsymbol{\lambda}" display />
+          <Math formula="\ddot{\mathbf{q}}=\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\mathbf{M}^{-1}\mathbf{J}^{T}\boldsymbol{\lambda}" display />
           <p>Substituting this acceleration into the compatibility condition gives</p>
-          <div class="equation"><math display="block"><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup><mi>λ</mi><mo>=</mo><mo>−</mo><mo>(</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>)</mo></math></div>
+          <Math formula="\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{T}\boldsymbol{\lambda}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)" display />
         </section>
 
         <section class="constraint-section solver-section">
           <p class="section-index">CONSTRAINT SOLVER</p>
           <h2>A linear system at each timestep</h2>
-          <div class="equation"><math display="block"><mi>A</mi><mo>=</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>J</mi><mi>T</mi></msup></math></div>
-          <div class="equation"><math display="block"><mi>b</mi><mo>=</mo><mo>−</mo><mo>(</mo><mi>J</mi><msup><mi>M</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>Q</mi><mtext>ext</mtext></msub><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>)</mo></math></div>
-          <div class="equation equation-final"><math display="block"><mi>A</mi><mi>λ</mi><mo>=</mo><mi>b</mi></math></div>
-          <p>For the normalized rod constraint, each component of λ has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
+          <Math formula="\mathbf{A}=\mathbf{J}\mathbf{M}^{-1}\mathbf{J}^{T}" display />
+          <Math formula="\mathbf{b}=-\left(\mathbf{J}\mathbf{M}^{-1}\mathbf{Q}_{\mathrm{ext}}+\dot{\mathbf{J}}\dot{\mathbf{q}}\right)" display />
+          <div class="equation-final"><Math formula="\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}" display /></div>
+          <p>For the normalized rod constraint, each component of <Math formula="\boldsymbol{\lambda}" /> has units of force. It represents the axial tension or compression required to maintain the rigid connection.</p>
           <div class="constraint-chain" aria-label="Constraint solver derivation">
-            <math display="block"><mi>C</mi><mo>(</mo><mi>q</mi><mo>)</mo><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>J</mi><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>J</mi><mover accent="true"><mi>q</mi><mo>¨</mo></mover><mo>+</mo><mover accent="true"><mi>J</mi><mo>˙</mo></mover><mover accent="true"><mi>q</mi><mo>˙</mo></mover><mo>=</mo><mn>0</mn><mspace width="1em"/><mo>→</mo><mspace width="1em"/><mi>A</mi><mi>λ</mi><mo>=</mo><mi>b</mi></math>
+            <Math formula="C(\mathbf{q})=0\quad\rightarrow\quad\mathbf{J}\dot{\mathbf{q}}=0\quad\rightarrow\quad\mathbf{J}\ddot{\mathbf{q}}+\dot{\mathbf{J}}\dot{\mathbf{q}}=0\quad\rightarrow\quad\mathbf{A}\boldsymbol{\lambda}=\mathbf{b}" display />
           </div>
         </section>
       </article>
