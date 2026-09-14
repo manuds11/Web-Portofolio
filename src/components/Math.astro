@@ -1,0 +1,22 @@
+---
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  formula: string;
+  display?: boolean;
+}
+
+const { formula, display = false } = Astro.props;
+const html = katex.renderToString(formula, {
+  displayMode: display,
+  throwOnError: false,
+  strict: "warn",
+});
+---
+
+{display ? (
+  <div class="math-display" set:html={html}></div>
+) : (
+  <span class="math-inline" set:html={html}></span>
+)}
