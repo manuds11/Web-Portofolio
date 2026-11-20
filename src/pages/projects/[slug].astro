@@ -3,12 +3,19 @@ import "../../styles/global.css";
 import Math from "../../components/Math.astro";
 
 export function getStaticPaths() {
-  const project = {
-    slug: "multibody-systems",
-    title: "Multibody Systems",
-    summary: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.",
-  };
-  return [{ params: { slug: project.slug }, props: { project } }];
+  const projects = [
+    {
+      slug: "multibody-systems",
+      title: "Multibody Systems",
+      summary: "A general 2D multibody framework that numerically integrates the motion of systems connected by spring-dampers and rigid rods under gravity.",
+    },
+    {
+      slug: "lqr-control",
+      title: "LQR Control",
+      summary: "A general multibody control framework with configurable actuation channels.",
+    },
+  ];
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
 }
 
 const { project } = Astro.props;
@@ -25,6 +32,7 @@ const { project } = Astro.props;
   <body>
     <main class="case-study">
       <header class="case-header"><a href="/Web-Portofolio/#projects">← Projects</a><a href="/Web-Portofolio/">Manuel Delgado Portfolio</a></header>
+      {project.slug === "multibody-systems" ? <>
       <section class="case-hero"><p class="section-index">MULTIBODY SYSTEMS</p><h1>Constraint Physics</h1><p>Rigid-rod constraints and the system solved at each simulation timestep.</p></section>
       <article class="constraint-article">
         <section class="constraint-section">
@@ -62,6 +70,17 @@ const { project } = Astro.props;
           </div>
         </section>
       </article>
+      </> : <>
+      <section class="case-hero"><p class="section-index">MULTIBODY CONTROL</p><h1>LQR Control</h1><p>{project.summary}</p></section>
+      <section class="case-outline" aria-label="LQR control project structure">
+        <ol>
+          <li><span>01</span>Control architecture</li>
+          <li><span>02</span>Reference state</li>
+          <li><span>03</span>LQR formulation</li>
+          <li><span>04</span>Real-time regulation</li>
+        </ol>
+      </section>
+      </>}
     </main>
   </body>
 </html>

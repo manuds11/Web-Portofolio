@@ -117,6 +117,7 @@ footer a { color:var(--orange); }
 .case-hero h1 { margin:0; font-size:clamp(3rem,6vw,5.8rem); line-height:1; letter-spacing:-.055em; font-weight:500; }
 .case-hero>p:last-child { max-width:660px; margin:24px 0 0; color:#b6c9d1; font-size:1.05rem; line-height:1.7; }
 .case-outline { border-top:1px solid var(--line); }
+.case-outline { padding-bottom:96px; }
 .case-outline ol { margin:50px 0 0; padding:0; list-style:none; }
 .case-outline li { display:grid; grid-template-columns:70px 1fr auto; align-items:center; gap:20px; padding:24px 0; border-bottom:1px solid var(--line); font-size:1.05rem; }
 .case-outline li span { color:var(--orange); font:.7rem monospace; }
